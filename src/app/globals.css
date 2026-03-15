@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+body {
+  background-color: #0A0E1A;
+  color: #E5E7EB;
+}
+
+/* MDX prose overrides */
+.prose {
+  --tw-prose-body: #D1D5DB;
+  --tw-prose-headings: #F9FAFB;
+  --tw-prose-lead: #9CA3AF;
+  --tw-prose-links: #60A5FA;
+  --tw-prose-bold: #F9FAFB;
+  --tw-prose-counters: #6B7280;
+  --tw-prose-bullets: #4B5563;
+  --tw-prose-hr: #1F2937;
+  --tw-prose-quotes: #F9FAFB;
+  --tw-prose-quote-borders: #374151;
+  --tw-prose-captions: #6B7280;
+  --tw-prose-code: #A5F3FC;
+  --tw-prose-pre-code: #D1D5DB;
+  --tw-prose-pre-bg: #111827;
+  --tw-prose-th-borders: #374151;
+  --tw-prose-td-borders: #1F2937;
+}
+
+.prose table {
+  font-size: 0.875rem;
+}
+
+.prose th {
+  background-color: #111827;
+  font-weight: 600;
+}
+
+.prose td, .prose th {
+  padding: 0.5rem 0.75rem;
+}
+
+.prose tr:nth-child(even) td {
+  background-color: #0F1623;
+}
