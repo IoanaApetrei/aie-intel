@@ -4,44 +4,115 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
+:root {
+  --bg: #0B0F1A;
+  --surface: #131929;
+  --border: #1E2A3A;
+  --text: #CBD5E1;
+  --text-muted: #64748B;
+  --accent: #3B82F6;
+}
+
 body {
-  background-color: #0A0E1A;
-  color: #E5E7EB;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-/* MDX prose overrides */
+/* ── Section cards ──────────────────────────────── */
+.report-section {
+  @apply rounded-xl border border-[#1E2A3A] bg-[#131929] p-6 mb-4;
+}
+
+/* ── Prose overrides ────────────────────────────── */
 .prose {
-  --tw-prose-body: #D1D5DB;
-  --tw-prose-headings: #F9FAFB;
-  --tw-prose-lead: #9CA3AF;
+  --tw-prose-body: #CBD5E1;
+  --tw-prose-headings: #F1F5F9;
+  --tw-prose-lead: #94A3B8;
   --tw-prose-links: #60A5FA;
-  --tw-prose-bold: #F9FAFB;
-  --tw-prose-counters: #6B7280;
-  --tw-prose-bullets: #4B5563;
-  --tw-prose-hr: #1F2937;
-  --tw-prose-quotes: #F9FAFB;
-  --tw-prose-quote-borders: #374151;
-  --tw-prose-captions: #6B7280;
-  --tw-prose-code: #A5F3FC;
-  --tw-prose-pre-code: #D1D5DB;
-  --tw-prose-pre-bg: #111827;
-  --tw-prose-th-borders: #374151;
-  --tw-prose-td-borders: #1F2937;
+  --tw-prose-bold: #F1F5F9;
+  --tw-prose-counters: #64748B;
+  --tw-prose-bullets: #334155;
+  --tw-prose-hr: #1E2A3A;
+  --tw-prose-quotes: #F1F5F9;
+  --tw-prose-quote-borders: #3B82F6;
+  --tw-prose-code: #7DD3FC;
+  --tw-prose-pre-bg: #0B0F1A;
+  --tw-prose-th-borders: #1E2A3A;
+  --tw-prose-td-borders: #1E2A3A;
 }
 
+.prose h2 {
+  @apply text-base font-semibold text-blue-400 uppercase tracking-widest mt-0 mb-4 pb-2 border-b border-[#1E2A3A];
+}
+
+.prose h3 {
+  @apply text-sm font-semibold text-slate-300 uppercase tracking-wider mt-5 mb-3;
+}
+
+.prose h4 {
+  @apply text-sm font-semibold text-slate-400 mt-4 mb-2;
+}
+
+.prose p {
+  @apply text-sm leading-relaxed text-slate-300;
+}
+
+.prose ul {
+  @apply space-y-1.5;
+}
+
+.prose li {
+  @apply text-sm text-slate-300;
+}
+
+.prose strong {
+  @apply text-slate-100 font-semibold;
+}
+
+.prose a {
+  @apply text-blue-400 no-underline hover:underline;
+}
+
+.prose hr {
+  @apply border-[#1E2A3A] my-6;
+}
+
+/* ── Tables ─────────────────────────────────────── */
 .prose table {
-  font-size: 0.875rem;
+  @apply text-xs w-full border-collapse;
+}
+
+.prose thead tr {
+  @apply bg-[#0B0F1A];
 }
 
 .prose th {
-  background-color: #111827;
-  font-weight: 600;
+  @apply text-left text-slate-400 font-semibold px-3 py-2 border border-[#1E2A3A] uppercase tracking-wide text-xs;
 }
 
-.prose td, .prose th {
-  padding: 0.5rem 0.75rem;
+.prose td {
+  @apply px-3 py-2 border border-[#1E2A3A] text-slate-300 align-top;
 }
 
-.prose tr:nth-child(even) td {
-  background-color: #0F1623;
+.prose tbody tr:nth-child(even) td {
+  @apply bg-[#0F1522];
+}
+
+/* ── Code ───────────────────────────────────────── */
+.prose code {
+  @apply text-xs font-mono bg-[#0B0F1A] text-sky-300 px-1.5 py-0.5 rounded;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+/* ── Blockquote ─────────────────────────────────── */
+.prose blockquote {
+  @apply border-l-2 border-blue-500 pl-4 text-slate-400 not-italic;
+}
+
+.prose blockquote p {
+  @apply text-slate-400;
 }

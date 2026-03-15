@@ -12,17 +12,11 @@ const config: Config = {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
-      colors: {
-        cast: {
-          blue: '#0052CC',
-          dark: '#0A0E1A',
-          surface: '#111827',
-          border: '#1F2937',
-        }
-      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 
 export default config
