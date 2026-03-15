@@ -1,15 +1,13 @@
-'use client'
-
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 
 interface Props {
-  source: MDXRemoteSerializeResult
+  source: string
 }
 
 export default function ReportViewer({ source }: Props) {
   return (
     <article className="prose prose-invert max-w-none">
-      <MDXRemote {...source} />
+      <MDXRemote source={source} />
     </article>
   )
 }

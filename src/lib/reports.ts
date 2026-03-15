@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 const REPORTS_DIR = path.join(process.cwd(), 'reports')
 
 export interface ReportMeta {
-  slug: string        // YYYY-MM-DD
+  slug: string
   date: string
   title: string
 }

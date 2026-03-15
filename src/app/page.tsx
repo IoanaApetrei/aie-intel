@@ -1,5 +1,4 @@
 import { getLatestReport, getAllReportSlugs } from '@/lib/reports'
-import { serialize } from 'next-mdx-remote/serialize'
 import ReportViewer from '@/components/ReportViewer'
 import Link from 'next/link'
 import { format, parseISO } from 'date-fns'
@@ -22,13 +21,10 @@ export default async function Home() {
     )
   }
 
-  const mdxSource = await serialize(latest.content)
-
   return (
     <main className="max-w-4xl mx-auto px-6 py-12">
       <Header />
 
-      {/* Archive nav */}
       {allSlugs.length > 1 && (
         <nav className="mt-6 flex flex-wrap gap-2">
           {allSlugs.map((slug) => (
@@ -47,12 +43,12 @@ export default async function Home() {
         </nav>
       )}
 
-      <div className="mt-8 text-xs text-gray-500 font-mono">
+      <div className="mt-4 text-xs text-gray-500 font-mono">
         Latest — {format(parseISO(latest.meta.date), 'MMMM d, yyyy')}
       </div>
 
       <div className="mt-6">
-        <ReportViewer source={mdxSource} />
+        <ReportViewer source={latest.content} />
       </div>
     </main>
   )

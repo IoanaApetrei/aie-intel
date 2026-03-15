@@ -1,5 +1,4 @@
 import { getReportBySlug, getAllReportSlugs } from '@/lib/reports'
-import { serialize } from 'next-mdx-remote/serialize'
 import ReportViewer from '@/components/ReportViewer'
 import Link from 'next/link'
 import { format, parseISO } from 'date-fns'
@@ -13,8 +12,6 @@ export async function generateStaticParams() {
 export default async function ReportPage({ params }: { params: { slug: string } }) {
   const report = getReportBySlug(params.slug)
   if (!report) notFound()
-
-  const mdxSource = await serialize(report.content)
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-12">
@@ -35,12 +32,12 @@ export default async function ReportPage({ params }: { params: { slug: string } 
         </div>
       </header>
 
-      <div className="mt-6 text-xs text-gray-500 font-mono">
+      <div className="mt-4 text-xs text-gray-500 font-mono">
         {format(parseISO(report.meta.date), 'MMMM d, yyyy')}
       </div>
 
       <div className="mt-6">
-        <ReportViewer source={mdxSource} />
+        <ReportViewer source={report.content} />
       </div>
     </main>
   )
