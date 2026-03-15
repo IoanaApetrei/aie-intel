@@ -1,6 +1,7 @@
 import { getReportBySlug, getAllReportSlugs } from '@/lib/reports'
 import ReportViewer from '@/components/ReportViewer'
 import Link from 'next/link'
+import { format, parseISO } from 'date-fns'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -12,22 +13,30 @@ export default async function ReportPage({ params }: { params: { slug: string } 
   if (!report) notFound()
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-[#1E2A3A] bg-[#0B0F1A]/80 backdrop-blur sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">AI</div>
-            <span className="text-sm font-semibold text-slate-200">AI Enabler Strategic Intel</span>
+    <div className="flex flex-col h-screen overflow-hidden">
+      <header className="h-14 shrink-0 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-50">
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+            AI
           </div>
-          <Link href="/" className="text-xs text-blue-400 hover:text-blue-300 transition-colors">
-            ← Latest report
+          <span className="font-semibold text-gray-900 text-sm">Weekly Intelligence</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5 text-xs text-gray-500">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2"/>
+              <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2"/>
+              <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2"/>
+              <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2"/>
+            </svg>
+            {format(parseISO(report.meta.date), 'EEEE, MMMM d, yyyy')}
+          </div>
+          <Link href="/" className="text-xs text-blue-600 hover:text-blue-700 transition-colors">
+            ← Latest
           </Link>
         </div>
       </header>
-
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        <ReportViewer source={report.content} date={report.meta.date} />
-      </main>
+      <ReportViewer source={report.content} date={report.meta.date} />
     </div>
   )
 }

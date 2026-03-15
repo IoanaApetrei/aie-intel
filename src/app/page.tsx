@@ -10,29 +10,29 @@ export default async function Home() {
   const allSlugs = getAllReportSlugs()
 
   return (
-    <div className="min-h-screen">
-      {/* Top bar */}
-      <header className="border-b border-[#1E2A3A] bg-[#0B0F1A]/80 backdrop-blur sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">AI</div>
-            <span className="text-sm font-semibold text-slate-200">AI Enabler Strategic Intel</span>
-            <span className="hidden sm:inline text-xs text-slate-600">·</span>
-            <span className="hidden sm:inline text-xs text-slate-500">Cast AI · Weekly</span>
-          </div>
+    <div className="flex flex-col h-screen overflow-hidden">
 
+      {/* ── Top bar ───────────────────────────────── */}
+      <header className="h-14 shrink-0 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-50">
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs shrink-0">
+            AI
+          </div>
+          <span className="font-semibold text-gray-900 text-sm">Weekly Intelligence</span>
+        </div>
+
+        <div className="flex items-center gap-4">
           {/* Archive switcher */}
           {allSlugs.length > 1 && (
             <div className="flex items-center gap-1.5">
-              <span className="text-xs text-slate-500 mr-1">Archive:</span>
-              {allSlugs.slice(0, 6).map((slug, i) => (
+              {allSlugs.slice(0, 5).map((slug, i) => (
                 <Link
                   key={slug}
                   href={i === 0 ? '/' : `/reports/${slug}`}
                   className={`px-2.5 py-1 rounded text-xs font-mono transition-colors ${
                     i === 0
                       ? 'bg-blue-600 text-white'
-                      : 'bg-[#131929] text-slate-400 hover:bg-[#1E2A3A] hover:text-slate-200 border border-[#1E2A3A]'
+                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-800'
                   }`}
                 >
                   {slug}
@@ -40,19 +40,32 @@ export default async function Home() {
               ))}
             </div>
           )}
+
+          {latest && (
+            <div className="flex items-center gap-1.5 text-xs text-gray-500">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2"/>
+                <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2"/>
+                <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2"/>
+                <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2"/>
+              </svg>
+              {format(parseISO(latest.meta.date), 'EEEE, MMMM d, yyyy')}
+            </div>
+          )}
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        {!latest ? (
-          <div className="text-center py-24 text-slate-500">
-            <p className="text-lg">No reports yet.</p>
-            <p className="text-sm mt-2">First report drops Monday 08:00 UTC.</p>
+      {/* ── Body ─────────────────────────────────── */}
+      {!latest ? (
+        <div className="flex-1 flex items-center justify-center text-gray-400">
+          <div className="text-center">
+            <p className="text-lg font-medium">No reports yet</p>
+            <p className="text-sm mt-1">First report drops Monday 08:00 UTC</p>
           </div>
-        ) : (
-          <ReportViewer source={latest.content} date={latest.meta.date} />
-        )}
-      </main>
+        </div>
+      ) : (
+        <ReportViewer source={latest.content} date={latest.meta.date} />
+      )}
     </div>
   )
 }
