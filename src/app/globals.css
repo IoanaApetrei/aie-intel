@@ -7,32 +7,32 @@
 * { box-sizing: border-box; }
 
 body {
-  background: #F8F9FC;
-  color: #111827;
+  background: #0A0E1A;
+  color: #E5E7EB;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* ── Prose ──────────────────────────────────────── */
 .prose {
-  --tw-prose-body: #374151;
-  --tw-prose-headings: #111827;
-  --tw-prose-bold: #111827;
-  --tw-prose-links: #2563EB;
-  --tw-prose-bullets: #9CA3AF;
-  --tw-prose-counters: #9CA3AF;
-  --tw-prose-hr: #E5E7EB;
-  --tw-prose-quote-borders: #2563EB;
-  --tw-prose-quotes: #374151;
-  --tw-prose-code: #1D4ED8;
-  --tw-prose-pre-bg: #F3F4F6;
-  --tw-prose-th-borders: #D1D5DB;
-  --tw-prose-td-borders: #E5E7EB;
+  --tw-prose-body: #D1D5DB;
+  --tw-prose-headings: #F9FAFB;
+  --tw-prose-bold: #F9FAFB;
+  --tw-prose-links: #60A5FA;
+  --tw-prose-bullets: #6B7280;
+  --tw-prose-counters: #6B7280;
+  --tw-prose-hr: #374151;
+  --tw-prose-quote-borders: #3B82F6;
+  --tw-prose-quotes: #D1D5DB;
+  --tw-prose-code: #93C5FD;
+  --tw-prose-pre-bg: #1F2937;
+  --tw-prose-th-borders: #374151;
+  --tw-prose-td-borders: #374151;
 }
 
 .prose h2 {
   font-size: 1rem;
   font-weight: 700;
-  color: #111827;
+  color: #F9FAFB;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
@@ -40,7 +40,7 @@ body {
 .prose h3 {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1F2937;
+  color: #E5E7EB;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
@@ -48,7 +48,7 @@ body {
 .prose h4 {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: #D1D5DB;
   margin-top: 1rem;
   margin-bottom: 0.4rem;
 }
@@ -56,34 +56,35 @@ body {
 .prose p {
   font-size: 0.875rem;
   line-height: 1.7;
-  color: #374151;
+  color: #D1D5DB;
 }
 
 .prose ul { margin: 0.5rem 0; padding-left: 1.25rem; }
 .prose ol { margin: 0.5rem 0; padding-left: 1.25rem; }
-.prose li { font-size: 0.875rem; color: #374151; margin: 0.3rem 0; line-height: 1.6; }
-.prose strong { color: #111827; font-weight: 600; }
-.prose a { color: #2563EB; text-decoration: none; }
+.prose li { font-size: 0.875rem; color: #D1D5DB; margin: 0.3rem 0; line-height: 1.6; }
+.prose strong { color: #F9FAFB; font-weight: 600; }
+.prose a { color: #60A5FA; text-decoration: none; }
 .prose a:hover { text-decoration: underline; }
 
-.prose hr { border-color: #E5E7EB; margin: 1.5rem 0; }
+.prose hr { border-color: #374151; margin: 1.5rem 0; }
 
 .prose blockquote {
-  border-left: 3px solid #2563EB;
+  border-left: 3px solid #3B82F6;
   padding-left: 1rem;
   margin: 1rem 0;
   font-style: italic;
-  color: #6B7280;
+  color: #9CA3AF;
 }
-.prose blockquote p { color: #6B7280; }
+.prose blockquote p { color: #9CA3AF; }
 
 .prose code {
   font-size: 0.8rem;
   font-family: 'JetBrains Mono', monospace;
-  background: #EFF6FF;
-  color: #1D4ED8;
+  background: #1F2937;
+  color: #93C5FD;
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
+  border: 1px solid #374151;
 }
 .prose code::before, .prose code::after { content: none; }
 
@@ -94,24 +95,24 @@ body {
   border-collapse: collapse;
   margin: 1rem 0;
 }
-.prose thead { background: #F3F4F6; }
+.prose thead { background: #1F2937; }
 .prose th {
   text-align: left;
   font-weight: 600;
-  color: #374151;
+  color: #E5E7EB;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #D1D5DB;
+  border: 1px solid #374151;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 .prose td {
   padding: 0.5rem 0.75rem;
-  border: 1px solid #E5E7EB;
-  color: #374151;
+  border: 1px solid #374151;
+  color: #D1D5DB;
   vertical-align: top;
 }
-.prose tbody tr:nth-child(even) td { background: #F9FAFB; }
+.prose tbody tr:nth-child(even) td { background: #111827; }
 
 /* ── Signal badges (auto-rendered in prose) ─────── */
 .badge-high {
@@ -121,9 +122,9 @@ body {
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 600;
-  background: #FEE2E2;
-  color: #B91C1C;
-  border: 1px solid #FECACA;
+  background: #7F1D1D;
+  color: #FCA5A5;
+  border: 1px solid #991B1B;
 }
 .badge-medium {
   display: inline-flex;
@@ -132,9 +133,9 @@ body {
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 600;
-  background: #FEF3C7;
-  color: #92400E;
-  border: 1px solid #FDE68A;
+  background: #78350F;
+  color: #FCD34D;
+  border: 1px solid #92400E;
 }
 .badge-low {
   display: inline-flex;
@@ -143,7 +144,7 @@ body {
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 600;
-  background: #F3F4F6;
-  color: #6B7280;
-  border: 1px solid #D1D5DB;
+  background: #374151;
+  color: #9CA3AF;
+  border: 1px solid #4B5563;
 }
